@@ -100,8 +100,13 @@
       <div class="cart-empty" id="cart-empty"><span aria-hidden="true">↗</span><p>سلتك تنتظر اكتشافاتك القادمة.</p><button type="button" id="continue-shopping">اكتشف المنتجات</button></div>
       <div class="cart-footer" id="cart-footer" hidden>
         <div class="cart-total"><span>المجموع</span><strong id="cart-total">$0</strong></div>
-        <button class="copy-order" id="copy-order" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg>نسخ قائمة الطلب</button>
-        <p class="cart-note">قائمة تجريبية، لا تشمل الدفع أو الشحن.</p>
+        <form class="checkout-form" id="checkout-form">
+          <label>الاسم<input name="customerName" autocomplete="name" required></label>
+          <label>رقم الهاتف<input name="customerPhone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" required></label>
+          <label>عنوان التوصيل<input name="customerAddress" autocomplete="street-address" required></label>
+          <button class="copy-order" type="submit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12 16-8-5 16-3-7-8-1Z"/><path d="m12 13 8-9"/></svg>أرسل الطلب عبر واتساب</button>
+        </form>
+        <p class="cart-note">ستفتح رسالة الطلب في واتساب لتختار محادثة المتجر وتؤكد الإرسال.</p>
       </div>
     </aside>
     <div class="toast" id="toast" role="status" aria-live="polite"></div>

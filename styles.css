@@ -126,9 +126,12 @@ svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width:
 .cart-footer { margin-top: auto; padding-top: 20px; border-top: 1px solid var(--line); }
 .cart-total { margin-bottom: 17px; display: flex; justify-content: space-between; font-size: 13px; }
 .cart-total strong { font: 600 16px "DM Sans", sans-serif; }
+.checkout-form { display: grid; gap: 10px; }
+.checkout-form label { display: grid; gap: 4px; color: var(--muted); font-size: 10px; }
+.checkout-form input { width: 100%; min-height: 37px; padding: 5px 9px; border: 1px solid var(--line); border-radius: 0; outline-color: var(--green); background: transparent; color: var(--ink); font-size: 12px; }
 .copy-order { width: 100%; min-height: 47px; display: flex; align-items: center; justify-content: center; gap: 9px; border: 0; background: var(--green); color: white; cursor: pointer; font-size: 13px; }
 .copy-order svg { width: 18px; }
-.cart-note { margin: 10px 0 0; color: var(--muted); text-align: center; font-size: 10px; }
+.cart-note { margin: 8px 0 0; color: var(--muted); text-align: center; font-size: 9px; line-height: 1.6; }
 .toast { position: fixed; z-index: 10; right: 50%; bottom: 24px; padding: 11px 17px; transform: translate(50%, 12px); opacity: 0; background: var(--ink); color: white; pointer-events: none; font-size: 12px; transition: .2s ease; }
 .toast.show { transform: translate(50%, 0); opacity: 1; }
 

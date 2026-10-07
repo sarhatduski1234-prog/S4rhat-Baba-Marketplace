@@ -164,18 +164,36 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-document.querySelector("#copy-order").addEventListener("click", async () => {
+document.querySelector("#checkout-form").addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (cart.length === 0) return;
+
+  const formData = new FormData(event.currentTarget);
   const lines = cart.map((item) => {
     const product = products.find((entry) => entry.id === item.id);
-    return `${product.name} × ${item.quantity} — ${currency.format(product.price * item.quantity)}`;
+    return `- ${product.name} × ${item.quantity}: ${currency.format(product.price * item.quantity)}`;
   });
   const total = cart.reduce((sum, item) => sum + products.find((product) => product.id === item.id).price * item.quantity, 0);
-  try {
-    await navigator.clipboard.writeText(`${lines.join("\n")}\nالمجموع: ${currency.format(total)}`);
-    showToast("نُسخت قائمة مشترياتك");
-  } catch {
-    showToast("تعذر النسخ في هذا المتصفح");
+  const message = [
+    "طلب جديد من sarhatstore",
+    `الاسم: ${formData.get("customerName")}`,
+    `الهاتف: ${formData.get("customerPhone")}`,
+    `العنوان: ${formData.get("customerAddress")}`,
+    "",
+    ...lines,
+    `المجموع: ${currency.format(total)}`,
+  ].join("\n");
+
+  if (navigator.share) {
+    navigator.share({ title: "طلب جديد من sarhatstore", text: message }).catch((error) => {
+      if (error.name !== "AbortError") {
+        window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+      }
+    });
+    return;
   }
+
+  window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
 });
 
 document.querySelector("#year").textContent = new Date().getFullYear();
