@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f3ed">
+    <meta name="description" content="اكتشف منتجات مختارة من بائعين محليين في sarhatstore.">
+    <title>sarhatstore | سوقك، على ذوقك</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="announcement-bar">
+      <p>اختيارات محلية، تفاصيل تحبّها <span aria-hidden="true">✳</span></p>
+      <a href="#products">تسوّق المجموعة <span aria-hidden="true">←</span></a>
+    </div>
+
+    <header class="site-header">
+      <a class="wordmark" href="#top" aria-label="sarhatstore، الصفحة الرئيسية">
+        <span class="wordmark-mark" aria-hidden="true">S</span>
+        <span>sarhatstore<small>سوقك، على ذوقك</small></span>
+      </a>
+      <nav class="main-nav" aria-label="التنقل الرئيسي">
+        <a class="active" href="#top">الرئيسية</a>
+        <a href="#products">كل المنتجات</a>
+        <a href="#about">عن السوق</a>
+      </nav>
+      <button class="cart-trigger" id="cart-trigger" type="button" aria-label="افتح سلة المشتريات">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 1.9-1.5L21 9H7M10 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg>
+        <span>السلة</span><b id="cart-count" aria-live="polite">0</b>
+      </button>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> سوق مستقل، اختيارات لها حكاية</p>
+          <h1 id="hero-title">أشياء جميلة.<br><em>من ناس حقيقيين.</em></h1>
+          <p class="hero-description">اكتشف منتجات صنعت بعناية، واختيرت لتضيف شيئًا مميزًا ليومك.</p>
+          <a class="primary-link" href="#products">اكتشف المنتجات <span aria-hidden="true">←</span></a>
+          <div class="hero-note"><span class="note-star" aria-hidden="true">✳</span><span>من بائعين مستقلين<br>إلى بيتك مباشرة</span></div>
+        </div>
+        <div class="hero-visual">
+          <img src="https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=1100&q=85" alt="صناديق هدايا ومنتجات مرتبة للتسوق" fetchpriority="high">
+          <div class="image-caption"><span>اختيرت لك</span><strong>تفاصيل تستحق الاكتشاف</strong></div>
+          <span class="hero-stamp" aria-hidden="true">صنع<br>بمحبة</span>
+        </div>
+      </section>
+
+      <section class="shop-section" id="products" aria-labelledby="products-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">من مجتمعنا إليك</p>
+            <h2 id="products-title">اكتشف ما تحب</h2>
+          </div>
+          <label class="search-box">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 4 4"/></svg>
+            <input id="search-input" type="search" placeholder="عن ماذا تبحث؟" aria-label="ابحث في المنتجات">
+            <kbd>/</kbd>
+          </label>
+        </div>
+
+        <div class="shop-toolbar">
+          <div class="category-list" id="category-list" role="group" aria-label="تصفية حسب التصنيف">
+            <button class="category-button selected" type="button" data-category="الكل" aria-pressed="true">الكل <span>06</span></button>
+            <button class="category-button" type="button" data-category="أزياء" aria-pressed="false">أزياء</button>
+            <button class="category-button" type="button" data-category="تقنية" aria-pressed="false">تقنية</button>
+            <button class="category-button" type="button" data-category="منزل" aria-pressed="false">منزل</button>
+            <button class="category-button" type="button" data-category="عناية" aria-pressed="false">عناية</button>
+          </div>
+          <p class="result-count" id="result-count" aria-live="polite">٦ منتجات</p>
+        </div>
+
+        <div class="product-grid" id="product-grid" aria-live="polite"></div>
+        <p class="empty-state" id="empty-state" hidden>ما لقينا منتجات بهذا الاسم. جرّب كلمة ثانية.</p>
+      </section>
+
+      <section class="seller-banner" id="about">
+        <span class="seller-symbol" aria-hidden="true">✳</span>
+        <div><p class="eyebrow">المجتمع يصنع الفرق</p><h2>وراء كل منتج شخص شغوف.</h2></div>
+        <p class="seller-description">نؤمن أن أجمل الأشياء تأتي من أشخاص يهتمون بصنعها. تعرّف على اختيارات بائعينا المستقلين.</p>
+        <a href="#products" aria-label="استكشف المنتجات">اكتشفهم <span aria-hidden="true">←</span></a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="wordmark footer-wordmark" href="#top"><span class="wordmark-mark" aria-hidden="true">S</span><span>sarhatstore<small>سوقك، على ذوقك</small></span></a>
+      <p>اختيرت بعناية، لتكون قريبة منك.</p>
+      <span>© <span id="year"></span> sarhatstore</span>
+    </footer>
+
+    <div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+    <aside class="cart-drawer" id="cart-drawer" aria-labelledby="cart-title" aria-hidden="true" inert>
+      <div class="drawer-heading"><div><p class="eyebrow">اختياراتك</p><h2 id="cart-title">سلة المشتريات</h2></div><button class="icon-button" id="close-cart" type="button" aria-label="إغلاق السلة"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+      <div class="cart-items" id="cart-items"></div>
+      <div class="cart-empty" id="cart-empty"><span aria-hidden="true">↗</span><p>سلتك تنتظر اكتشافاتك القادمة.</p><button type="button" id="continue-shopping">اكتشف المنتجات</button></div>
+      <div class="cart-footer" id="cart-footer" hidden>
+        <div class="cart-total"><span>المجموع</span><strong id="cart-total">$0</strong></div>
+        <button class="copy-order" id="copy-order" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg>نسخ قائمة الطلب</button>
+        <p class="cart-note">قائمة تجريبية، لا تشمل الدفع أو الشحن.</p>
+      </div>
+    </aside>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
